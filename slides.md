@@ -4,7 +4,7 @@
 
 # Generating high-performance multiplatform finite element solvers from high-level descriptions
 
-## Florian Rathgeber, Graham R. Markall, Nicolas Loriant, David A. Ham, Paul H. J. Kelly, Carlo Bertolli
+## Florian Rathgeber, Graham Markall, Nicolas Loriant, David Ham, Paul Kelly, Carlo Bertolli
 
 ### Imperial College London
 
@@ -12,11 +12,11 @@
 
 ### University of Edinburgh
 
-## Mike B. Giles, Gihan R. Mudalige
+## Mike Giles, Gihan Mudalige
 
 ### University of Oxford
 
-## Istvan Z. Reguly
+## Istvan Reguly
 
 ### Pazmany Peter Catholic University, Hungary
 
@@ -28,7 +28,7 @@
 
 <iframe width="853" height="480" src="http://www.youtube.com/embed/Y6mM_PCNhq0?rel=0" frameborder="0" allowfullscreen></iframe>
 
-The simulation was carried out with [Fluidity CFD code](http://amcg.ese.ic.ac.uk/index.php?title=FLUIDITY) solving the non-hydrostatic Navier-Stokes equations, using a [free surface and wetting and drying algorithm](http://amcg.ese.ic.ac.uk/index.php?title=Wetting_and_Drying)
+The simulation was carried out with the [Fluidity multi-phase CFD code](http://amcg.ese.ic.ac.uk/index.php?title=FLUIDITY) solving the non-hydrostatic Navier-Stokes equations, using a [free surface and wetting and drying algorithm](http://amcg.ese.ic.ac.uk/index.php?title=Wetting_and_Drying) (courtesy [Simon Funke](http://www3.imperial.ac.uk/people/s.funke09/)).
 
 !SLIDE huge
 
@@ -176,6 +176,21 @@ void kernel(double A[1][1], double *x[2],
 
 !SLIDE left
 
+# UFL equations in Fluidity
+
+## For each UFL equation in each time step:
+
+![Fluidity-UFL-PyOP2-toolchain](images/fluidity_pyop2_pipeline.svg)
+
+* Shell out to Python, execute the user's UFL equation
+* FFC generates C++ code for local assembly of FE forms
+* Instant JIT-compiles kernels and the parallel loops invoking them
+
+!NOTES
+* FFC + Instant invocations are cached
+
+!SLIDE left
+
 # Finite element assembly and solve in PyOP2
 
 @@@ python
@@ -218,7 +233,7 @@ def solve(A, x, b):
 CG with Jacobi preconditioning using PETSc 3.1 (PyOP2), 3.2 (DOLFIN)
 
 ##CPU
-2 x 6 core Intel Xeon E5650 Westmere (HT off), 48GB RAM
+Single core of an Intel Xeon E5650 Westmere (HT off), 48GB RAM
 
 ##Mesh
 2D unit square meshed with triangles (200 - 204800 elements)
