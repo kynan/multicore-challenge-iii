@@ -176,21 +176,6 @@ void kernel(double A[1][1], double *x[2],
 
 !SLIDE left
 
-# UFL equations in Fluidity
-
-## For each UFL equation in each time step:
-
-![Fluidity-UFL-PyOP2-toolchain](images/fluidity_pyop2_pipeline.svg)
-
-* Shell out to Python, execute the user's UFL equation
-* FFC generates C++ code for local assembly of FE forms
-* Instant JIT-compiles kernels and the parallel loops invoking them
-
-!NOTES
-* FFC + Instant invocations are cached
-
-!SLIDE left
-
 # Finite element assembly and solve in PyOP2
 
 @@@ python
@@ -220,6 +205,21 @@ def solve(A, x, b):
 
     op2.solve(mat, b, x)
 @@@
+
+!SLIDE left
+
+# UFL equations in Fluidity
+
+## For each UFL equation in each time step:
+
+![Fluidity-UFL-PyOP2-toolchain](images/fluidity_pyop2_pipeline.svg)
+
+* Shell out to Python, execute the user's UFL equation
+* FFC generates C++ code for local assembly of FE forms
+* Instant JIT-compiles kernels and the parallel loops invoking them
+
+!NOTES
+* FFC + Instant invocations are cached
 
 !SLIDE huge
 
@@ -265,4 +265,4 @@ All the code mentioned is open source and available on *GitHub*. Try it!
 <https://code.launchpad.net/~mapdes/ffc/pyop2>
 
 ## This talk
-<https://kynan.github.com/multicore-challenge-iii>
+<http://kynan.github.com/multicore-challenge-iii>
