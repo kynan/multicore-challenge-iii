@@ -26,7 +26,7 @@
 
 ## Tsunami simulation of the Hokkaido-Nansei-Oki tsunami of 1993
 
-<iframe width="853" height="480" src="http://www.youtube.com/embed/Y6mM_PCNhq0?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="640" height="360" src="http://www.youtube.com/embed/Y6mM_PCNhq0?rel=0" frameborder="0" allowfullscreen></iframe>
 
 The simulation was carried out with the [Fluidity multi-phase CFD code](http://amcg.ese.ic.ac.uk/index.php?title=FLUIDITY) solving the non-hydrostatic Navier-Stokes equations, using a [free surface and wetting and drying algorithm](http://amcg.ese.ic.ac.uk/index.php?title=Wetting_and_Drying) (courtesy [Simon Funke](http://www3.imperial.ac.uk/people/s.funke09/)).
 
